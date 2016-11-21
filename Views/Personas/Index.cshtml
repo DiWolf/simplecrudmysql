@@ -1,0 +1,31 @@
+@model IEnumerable<mysqltest.Entities.Persona>
+@{
+    ViewData["Title"] = "Inicio Personas";
+}
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Nuevo Registro</a>
+</p>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th></th>
+                </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem=> item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem=> item.Direccion)</td>
+                    <td>@Html.DisplayFor(modelItem=> item.Telefon)</td>
+                    <td> <a asp-action="Editar" asp-route-id="@item.Id"> Editar</a> |<a asp-action="Borrar" asp-route-id="@item.Id"> Borrar</a></td>
+                 </tr>
+            }
+        </tbody>
+</table>
